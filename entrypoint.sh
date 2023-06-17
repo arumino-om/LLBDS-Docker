@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Create user: ${USER_ID}:${GROUP_ID}"
-groupadd -g ${GROUP_ID} dockeruser
-useradd -m -s /bin/bash -u ${USER_ID} -g {GROUP_ID} dockeruser
+addgroup -g ${GROUP_ID} dockeruser
+adduser -s /bin/bash -u ${USER_ID} -g {GROUP_ID} dockeruser
 
 if [ -d "/server_build" ]; then
     cp /server_build/* /server/
