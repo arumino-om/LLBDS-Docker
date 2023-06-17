@@ -1,14 +1,14 @@
 #!/bin/bash
-echo "Change user to ${USER_ID}:${GROUP_ID}"
+echo "Create user: ${USER_ID}:${GROUP_ID}"
 groupadd -g ${GROUP_ID} dockeruser
 useradd -m -s /bin/bash -u ${USER_ID} -g {GROUP_ID} dockeruser
 
 if [ -d "/server_build" ]; then
     cp /server_build/* /server/
     rm -r /server_build
-    chown ${USER_ID}:${GROUP_ID} -r /server/*
+    chown ${USER_ID}:${GROUP_ID} -R /server/*
 fi
 
-exec /usr/sbin/gosu dockeruser "$@"
+exec su-exec dockeruser "$@"
 cd /server/bedrock_server
 wine bedrock_server_mod.exe
