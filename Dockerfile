@@ -34,4 +34,5 @@ RUN chown $USERNAME:$GROUPNAME -R /server_build/ && \
     chown $USERNAME:$GROUPNAME /server
 USER $USERNAME
 ENV WINEDEBUG=-all
+STOPSIGNAL SIGINT
 ENTRYPOINT ["sh", "/entrypoint.sh"]

@@ -4,4 +4,4 @@ if [ -d "/server_build" ]; then
 fi
 
 cd /server/bedrock_server
-wine bedrock_server_mod.exe
+exec wine bedrock_server_mod.exe
